@@ -8,7 +8,8 @@ getCurrentDate();
 //Create the time slots when the page loads. 
 createTimeSlots(); 
 
-
+//Load the current events from local storage. 
+fillSavedEvents(); 
 
 
 
@@ -23,72 +24,6 @@ function getCurrentDate() {
 
 function createTimeSlots() {
     //Create the times and the time output that will be printed to the screen.
-    var times = [
-        {
-            time: 8,
-            timeString: function() {
-                return `${this.time}AM`
-            } 
-        },
-        {
-            time: 9,
-            timeString: function() {
-                return `${this.time}AM`
-            } 
-        },
-        {
-            time: 10,
-            timeString: function() {
-                return `${this.time}AM`
-            } 
-        },
-        {
-            time: 11,
-            timeString: function() {
-                return `${this.time}AM`
-            } 
-        },
-        {
-            time: 12,
-            timeString: function() {
-                return `${this.time}PM`
-            } 
-        },
-        {
-            time: 1,
-            timeString: function() {
-                return `${this.time}PM`
-            } 
-        },
-        {
-            time: 2,
-            timeString: function() {
-                return `${this.time}PM`
-            } 
-        },
-        {
-            time: 3,
-            timeString: function() {
-                return `${this.time}PM`
-            } 
-        },
-        {
-            time: 4,
-            timeString: function() {
-                return `${this.time}PM`
-            } 
-        },
-        {
-            time: 5,
-            timeString: function() {
-                return `${this.time}PM`
-            } 
-        },
-    ];
-
-    times.forEach((time) => {
-        console.log(time.timeString()); 
-    }); 
 
     printTimes(times); 
 }
@@ -153,5 +88,28 @@ function saveTimeRows(event) {
     var eventKey = `${calendarEvent.date}_${calendarEvent.time}`
     //console.log(eventKey); 
     localStorage.setItem(eventKey, JSON.stringify(calendarEvent)); 
+    
+}
+
+function fillSavedEvents() {
+    //Get saved events from local storage.
+    var events = []; 
+
+    //Access the parsed objects that hold the saved events for the given day.
+    for(var timeSlot = 0; timeSlot < times.length; timeSlot++) {
+        var thisTime = times[timeSlot].time; 
+        var thisEvent = JSON.parse(localStorage.getItem(`${currentDate}_content-div-${thisTime}`)); 
+        //console.log(thisEvent); 
+
+        //If this time has a saved event (not null), place it in the events array.
+        if(thisEvent) {
+            events.push(thisEvent); 
+        }
+
+        //Go through each event, and save its text into the correct calendar time row.
+        events.forEach((event) => {
+            $(`#${event.time}`).text(event.content); 
+        });
+    }
     
 }
