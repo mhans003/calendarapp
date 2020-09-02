@@ -1,6 +1,7 @@
 //Save current date globally so that it is accessed when the page loads. 
 //This can allow the user to ensure that the date working on the page will be consistent if midnight passes.
 var currentDate; 
+var currentHour; 
 
 //Get the current date.
 getCurrentDate(); 
@@ -10,6 +11,9 @@ createTimeSlots();
 
 //Load the current events from local storage. 
 fillSavedEvents(); 
+
+//Fill in colors for past, present, and future.
+getCurrentColors(); 
 
 
 
@@ -41,7 +45,8 @@ function printTimes(times) {
         var timeDiv = $("<div>"); 
         timeDiv.attr("class", "col-sm-2 time-div"); 
         timeDiv.attr("id", `time-div-${time.time}`);
-        timeDiv.text(time.timeString());
+        //timeDiv.text(time.timeString());
+        timeDiv.text(time.timeString); 
 
         //Create div for content.
         var contentDiv = $("<div>"); 
@@ -112,4 +117,15 @@ function fillSavedEvents() {
         });
     }
     
+}
+
+function getCurrentColors() {
+    currentHour = Number(moment().format("HH")); 
+    console.log(currentHour); 
+
+    //Loop through each time slot and color with the correct time color
+    for(var timeIndex = 0; timeIndex < times.length; timeIndex++) {
+        console.log($(`#content-div-${times[timeIndex].time}`).text()); 
+
+    }
 }
