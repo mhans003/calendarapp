@@ -1,3 +1,7 @@
+//Save current date globally so that it is accessed when the page loads. 
+//This can allow the user to ensure that the date working on the page will be consistent if midnight passes.
+var currentDate; 
+
 //Get the current date.
 getCurrentDate(); 
 
@@ -12,7 +16,8 @@ createTimeSlots();
 function getCurrentDate() {
     //Get the current date using Moment.js and display in the heading.
 
-    $("#current-date").text(moment().format("dddd, MMMM Do YYYY")); 
+    currentDate = moment().format("dddd, MMMM Do YYYY"); 
+    $("#current-date").text(currentDate); 
     
 }
 
@@ -107,13 +112,17 @@ function printTimes(times) {
         var contentDiv = $("<div>"); 
         contentDiv.attr("class", "col-sm-8 content-div");
         contentDiv.attr("id", `content-div-${time.time}`); 
+        contentDiv.attr("contenteditable", "true"); 
         contentDiv.text("Test"); 
 
         //Create save button icon. 
         var saveDiv = $("<div>"); 
         saveDiv.attr("class", "col-sm-2 save-div"); 
         saveDiv.attr("id", `save-button-${time.time}`);
-        saveDiv.html("<i class='far fa-save'></i>");  
+        saveDiv.attr("data-target", `content-div-${time.time}`); 
+        saveDiv.html("<i class='far fa-save'></i>"); 
+        
+        
 
         //Append time div, content div, and save div to the row.
         timeRow.append(timeDiv); 
@@ -122,5 +131,27 @@ function printTimes(times) {
 
         //Append the row to the timeslots container. 
         $("#timeslots").append(timeRow); 
+
+        //Add event listeners to buttons.
+        saveDiv.on("click", saveTimeRows); 
     }); 
+}
+
+function saveTimeRows(event) {
+    //Save the current content div for a given block so that it persists in the browser.
+    console.log($(event.target).attr("data-target")); 
+
+    //Create the object holding the event data. 
+    var calendarEvent = {
+        date: currentDate,
+        time: $(`#${$(event.target).attr("data-target")}`).attr("id"),
+        content: $(`#${$(event.target).attr("data-target")}`).text()
+    }; 
+
+    //console.log(calendarEvent); 
+
+    var eventKey = `${calendarEvent.date}_${calendarEvent.time}`
+    //console.log(eventKey); 
+    localStorage.setItem(eventKey, JSON.stringify(calendarEvent)); 
+    
 }
