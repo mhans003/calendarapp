@@ -52,7 +52,7 @@ function printTimes(times) {
         contentDiv.attr("class", "col-sm-8 content-div");
         contentDiv.attr("id", `content-div-${time.militaryTime}`); 
         contentDiv.attr("contenteditable", "true"); 
-        contentDiv.text("Type something to do and click the save icon!"); 
+        contentDiv.text(""); 
 
         //Create save button icon, also setting its id. 
         var saveDiv = $("<div>"); 
