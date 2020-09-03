@@ -15,9 +15,6 @@ fillSavedEvents();
 //Fill in colors for past, present, and future.
 getCurrentColors(); 
 
-
-
-
 function getCurrentDate() {
     //Get the current date using Moment.js and display in the heading.
     currentDate = moment().format("dddd, MMMM Do YYYY"); 
@@ -108,13 +105,27 @@ function fillSavedEvents() {
 
 function getCurrentColors() {
     //Fill in the events with the appropriate color depending on past, present, future. 
-    
+
     currentHour = Number(moment().format("HH")); 
     console.log(currentHour); 
 
     //Loop through each time slot and color with the correct time color
     for(var timeIndex = 0; timeIndex < times.length; timeIndex++) {
-        console.log($(`#content-div-${times[timeIndex].militaryTime}`).text()); 
+
+        var thisTimeRow = $("#content-div-" + times[timeIndex].militaryTime); 
+        var thisTimeOutput = $("#time-div-" + times[timeIndex].militaryTime); 
+        console.log(thisTimeRow);  
+        //thisTimeRow.css("background-color", "blue"); 
+
+        if(times[timeIndex].militaryTime < currentHour) {
+            thisTimeRow.addClass("past");
+            thisTimeOutput.addClass("past-time"); 
+        } else if(times[timeIndex].militaryTime === currentHour) {
+            thisTimeRow.addClass("present");
+            thisTimeOutput.addClass("present-time"); 
+        } else {
+            thisTimeRow.addClass("future"); 
+        }
 
     }
 }

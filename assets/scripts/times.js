@@ -11,11 +11,11 @@ class time {
 var times = []; 
 
 //Fill the times array with the desired times (using military time as a base). 
-for(let thisTime = 8; thisTime < 18; thisTime++) {
+for(let thisTime = 5; thisTime < 18; thisTime++) {
     times.push(new time(thisTime)); 
 }
 
 //Test console log
 for(let i = 0; i < times.length; i++) {
-    console.log(times[i]); 
+    console.log(times[i].militaryTime); 
 }
