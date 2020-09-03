@@ -3,26 +3,38 @@
 var currentDate; 
 var currentHour; 
 
+//Keep track of whether the user is on the current day (0 === today). 
+var dayOffset = 0; 
+
+//Start off the application with the current day (offset === 0). 
 //Get the current date.
 getCurrentDate(); 
-
 //Create the time slots when the page loads. 
 printTimes(times); 
-
 //Load the current events from local storage. 
 fillSavedEvents(); 
-
 //Fill in colors for past, present, and future.
 getCurrentColors(); 
 
 function getCurrentDate() {
-    //Get the current date using Moment.js and display in the heading.
-    currentDate = moment().format("dddd, MMMM Do YYYY"); 
-    $("#current-date").text(currentDate); 
+    $("#current-date").html(""); 
+    //Get the current/selected date using Moment.js and display in the heading.
+    currentDate = moment().add(dayOffset,"days").format("dddd, MMMM Do YYYY"); 
+    $("#current-date").append("<i class='fas fa-arrow-left' id='back-button'></i>"); 
+    //$("#current-date").text(currentDate); 
+    $("#current-date").append(` ${currentDate} `); 
+    $("#current-date").append("<i class='fas fa-arrow-right' id='forward-button'></i>"); 
+
+    $("#back-button").on("click", changeDate); 
+    $("#forward-button").on("click", changeDate); 
 }
 
 function printTimes(times) {
     //Print out divs for each time block. 
+
+    //Empty the current times. 
+    $("#timeslots").html(""); 
+
     times.forEach((time) => {
         //Make this time row and set its id dynamically to the current time's military time. 
         var timeRow = $("<div>");
@@ -117,15 +129,47 @@ function getCurrentColors() {
         console.log(thisTimeRow);  
         //thisTimeRow.css("background-color", "blue"); 
 
-        if(times[timeIndex].militaryTime < currentHour) {
+        //Check if the current day is today (offset = 0), and color items accordingly.
+        if(dayOffset === 0) {
+            if(times[timeIndex].militaryTime < currentHour) {
+                thisTimeRow.addClass("past");
+                thisTimeOutput.addClass("past-time"); 
+            } else if(times[timeIndex].militaryTime === currentHour) {
+                thisTimeRow.addClass("present");
+                thisTimeOutput.addClass("present-time"); 
+            } else {
+                thisTimeRow.addClass("future"); 
+            }
+        } else if(dayOffset < 0) {
+            //If the day is before today, make all time slots completed/past.
             thisTimeRow.addClass("past");
             thisTimeOutput.addClass("past-time"); 
-        } else if(times[timeIndex].militaryTime === currentHour) {
-            thisTimeRow.addClass("present");
-            thisTimeOutput.addClass("present-time"); 
         } else {
+            //Otherwise, make all time slots in the future. 
             thisTimeRow.addClass("future"); 
-        }
-
+        }   
     }
+}
+
+function changeDate(event) {
+    //When the user clicks an arrow to change the date, see which button it was.
+    var button = event.target.getAttribute("id"); 
+
+    //If the back button was pressed, take away one from the offset. 
+    if(button === "back-button") {
+        dayOffset--; 
+
+    //Otherwise, add to the day offset. 
+    } else if(button === "forward-button") {
+        dayOffset++; 
+    }
+
+    //Get the current date.
+    getCurrentDate(); 
+    //Create the time slots when the page loads. 
+    printTimes(times); 
+    //Load the current events from local storage. 
+    fillSavedEvents(); 
+    //Fill in colors for past, present, and future.
+    getCurrentColors(); 
 }
