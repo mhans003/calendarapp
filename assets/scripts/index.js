@@ -88,6 +88,14 @@ function saveTimeRows(event) {
     //Create a key for storing this particular calendar event in local storage. Parse to JSON. 
     var eventKey = `${calendarEvent.date}_${calendarEvent.time}`
     localStorage.setItem(eventKey, JSON.stringify(calendarEvent)); 
+
+    //Show the green checkmark after save. Set a timer to return the icon back to the save button.
+    $(`#${$(event.target).attr("id")}`).html("<i class='fas fa-check'></i>"); 
+    $(`#${$(event.target).attr("id")}`).css("color", "green"); 
+    setTimeout(function() {
+        $(`#${$(event.target).attr("id")}`).html("<i class='far fa-save'></i>"); 
+        $(`#${$(event.target).attr("id")}`).css("color", "black");
+    }, 1000); 
     
 }
 
