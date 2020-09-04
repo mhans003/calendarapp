@@ -9,6 +9,8 @@ header {
     color: #fff; 
 }
 
+/*HEADER STYLES*/
+
 #header-background {
     position: relative; 
     top: 0; 
@@ -30,6 +32,8 @@ h1 {
 h6 {
     animation: popout 0.8s;
 }
+
+/*STYLES FOR DROPDOWN*/
 
 #info-button {
     padding: 10px 0px 0px 10px; 
@@ -53,6 +57,8 @@ h6 {
 #end-time {
     animation: popout 1.2s;
 }
+
+/*STYLES FOR TIME ROWS/SLOTS*/
 
 .time-row {
     height: 100px; 
