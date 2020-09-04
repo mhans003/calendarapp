@@ -24,6 +24,11 @@ h1, h6 {
 
 h1 {
     line-height: 150px;
+    animation: popout 0.6s;
+}
+
+h6 {
+    animation: popout 0.8s;
 }
 
 #info-button {
@@ -34,6 +39,19 @@ h1 {
 #timeslots {
     margin-top: 5%; 
     margin-bottom: 5%; 
+    box-shadow: 4px -4px 8px rgba(200,210,210,1.0); 
+}
+
+#start-time, #end-time {
+    box-shadow: 2px -1px 6px rgba(200,210,210,1.0); 
+}
+
+#start-time {
+    animation: popout 1.0s;
+}
+
+#end-time {
+    animation: popout 1.2s;
 }
 
 .time-row {
