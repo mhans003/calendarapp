@@ -24,6 +24,7 @@
 <body>
     <header>
         <div id="header-background">
+            <i id="info-button" class="fas fa-info-circle" data-toggle="modal" data-target="#instructionsModal"></i>
             <h1>Day Planner</h1>
             <h6 id="current-date"></h6>
         </div>
@@ -31,6 +32,31 @@
     
     <div id="timeslots" class="container">
     </div>   
+
+    <!--Instructions Modal-->
+    <div class="modal fade" id="instructionsModal" tabindex="-1" aria-labelledby="instructionsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <section class="modal-header">
+                    <h5 class="modal-title" id="instructionsModalLabel">Information <i class="fas fa-info-circle"></i></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </section>
+                <div class="modal-body">
+                    <p>
+                        Click into the text field for each time slot to type a calendar event.
+                    </p>
+                    <p>
+                        Click the save button for that time slot to save the event in your browser.
+                    </p>
+                    <p>
+                        Change your date using the arrow buttons in the heading. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 <!--Script Files-->
