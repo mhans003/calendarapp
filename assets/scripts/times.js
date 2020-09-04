@@ -11,7 +11,7 @@ class time {
 var times = []; 
 
 //Fill the times array with the desired times (using military time as a base). 
-for(let thisTime = 3; thisTime < 20; thisTime++) {
+for(let thisTime = 0; thisTime < 24; thisTime++) {
     times.push(new time(thisTime)); 
 }
 
