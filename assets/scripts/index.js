@@ -23,8 +23,7 @@ function getCurrentDate() {
     $("#current-date").html(""); 
     //Get the current/selected date using Moment.js and display in the heading.
     currentDate = moment().add(dayOffset,"days").format("dddd, MMMM Do YYYY"); 
-    $("#current-date").append("<i class='fas fa-arrow-left' id='back-button'></i>"); 
-    //$("#current-date").text(currentDate); 
+    $("#current-date").append("<i class='fas fa-arrow-left' id='back-button'></i>");  
     $("#current-date").append(` ${currentDate} `); 
     $("#current-date").append("<i class='fas fa-arrow-right' id='forward-button'></i>"); 
 
@@ -79,7 +78,6 @@ function printTimes(times) {
 
 function saveTimeRows(event) {
     //When the user chooses, save the current content div for a given block so that it persists in the browser's local storage. 
-    //console.log($(event.target).attr("data-target")); 
 
     //Create the object holding the event data using the current date, passing through the data of the appropriate time slot. 
     var calendarEvent = {
@@ -130,15 +128,12 @@ function getCurrentColors() {
     //Fill in the events with the appropriate color depending on past, present, future. 
 
     currentHour = Number(moment().format("HH")); 
-    //console.log(currentHour); 
 
     //Loop through each time slot and color with the correct time color
     for(var timeIndex = 0; timeIndex < times.length; timeIndex++) {
 
         var thisTimeRow = $("#content-div-" + times[timeIndex].militaryTime); 
         var thisTimeOutput = $("#time-div-" + times[timeIndex].militaryTime); 
-        //console.log(thisTimeRow);  
-        //thisTimeRow.css("background-color", "blue"); 
 
         //Check if the current day is today (offset = 0), and color items accordingly.
         if(dayOffset === 0) {
@@ -164,7 +159,6 @@ function getCurrentColors() {
 
 function changeCalendar(event) {
     //When the user clicks an arrow to change the date, see which button it was.
-    //var button = event.target.getAttribute("id"); 
     var button = $(event.target).attr("id"); 
     console.log(button); 
 
