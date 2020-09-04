@@ -11,11 +11,15 @@ class time {
 var times = []; 
 
 //Fill the times array with the desired times (using military time as a base). 
-for(let thisTime = 0; thisTime < 24; thisTime++) {
-    times.push(new time(thisTime)); 
-}
+function fillTimes() {
+    //Clear the times array in case it is being refilled. 
+    times = []; 
+    //Access the starting time and ending time from the HTML form. 
+    var startTime = Number($("#start-time option:selected").attr("option-value")); 
+    var endTime = Number($("#end-time option:selected").attr("option-value")); 
 
-//Test console log
-for(let i = 0; i < times.length; i++) {
-    console.log(times[i].militaryTime); 
+    //Fill the array within the correct time slots. 
+    for(let thisTime = startTime; thisTime < endTime; thisTime++) {
+        times.push(new time(thisTime)); 
+    }
 }

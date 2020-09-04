@@ -29,6 +29,47 @@
             <h6 id="current-date"></h6>
         </div>
     </header>
+
+    <!--Dropdown menu for starting and ending times to dispaly at any given time.-->
+    <form class="container mt-5">
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <label for="input-start">From</label>
+                <select id="start-time" class="form-control">
+                    <option option-value="0">12AM</option>
+                    <option option-value="1">1AM</option>
+                    <option option-value="2">2AM</option>
+                    <option option-value="3">3AM</option>
+                    <option option-value="4">4AM</option>
+                    <option option-value="5">5AM</option>
+                    <option option-value="6" selected>6AM</option>
+                    <option option-value="7">7AM</option>
+                    <option option-value="8">8AM</option>
+                    <option option-value="9">9AM</option>
+                    <option option-value="10">10AM</option>
+                    <option option-value="11">11AM</option>
+                </select>
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="input-end">To</label>
+                <select id="end-time" class="form-control">
+                    <option option-value="12">12PM</option>
+                    <option option-value="13">1PM</option>
+                    <option option-value="14">2PM</option>
+                    <option option-value="15">3PM</option>
+                    <option option-value="16">4PM</option>
+                    <option option-value="17" selected>5PM</option>
+                    <option option-value="18">6PM</option>
+                    <option option-value="19">7PM</option>
+                    <option option-value="20">8PM</option>
+                    <option option-value="21">9PM</option>
+                    <option option-value="22">10PM</option>
+                    <option option-value="23">11PM</option>
+                    <option option-value="24">12AM</option>
+                </select>
+            </div>
+        </div>
+    </form>
     
     <div id="timeslots" class="container">
     </div>   

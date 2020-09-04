@@ -6,6 +6,9 @@ var currentHour;
 //Keep track of whether the user is on the current day (0 === today). 
 var dayOffset = 0; 
 
+//Fill the times to start the application with the default time slots. 
+fillTimes(); 
+
 //Start off the application with the current day (offset === 0). 
 //Get the current date.
 getCurrentDate(); 
@@ -25,8 +28,8 @@ function getCurrentDate() {
     $("#current-date").append(` ${currentDate} `); 
     $("#current-date").append("<i class='fas fa-arrow-right' id='forward-button'></i>"); 
 
-    $("#back-button").on("click", changeDate); 
-    $("#forward-button").on("click", changeDate); 
+    $("#back-button").on("click", changeCalendar); 
+    $("#forward-button").on("click", changeCalendar); 
 }
 
 function printTimes(times) {
@@ -159,9 +162,10 @@ function getCurrentColors() {
     }
 }
 
-function changeDate(event) {
+function changeCalendar(event) {
     //When the user clicks an arrow to change the date, see which button it was.
     var button = event.target.getAttribute("id"); 
+    console.log(button); 
 
     //If the back button was pressed, take away one from the offset. 
     if(button === "back-button") {
@@ -172,6 +176,11 @@ function changeDate(event) {
         dayOffset++; 
     }
 
+    //Refill times if the function trigger was a change to the starting or ending time. 
+    if(button === "start-time" || button === "end-time") {
+        fillTimes();
+    }
+     
     //Get the current date.
     getCurrentDate(); 
     //Create the time slots when the page loads. 
@@ -181,3 +190,7 @@ function changeDate(event) {
     //Fill in colors for past, present, and future.
     getCurrentColors(); 
 }
+
+//Event listeners for changing the starting and ending times will trigger the calendar to reset with the new times. 
+$("#start-time").on("change", changeCalendar); 
+$("#end-time").on("change", changeCalendar); 
