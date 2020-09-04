@@ -3,7 +3,8 @@
 }
 
 header {
-    background-image: url(/assets/images/desk1.jpg);
+    /*background-image: url(/assets/images/desk1.jpg);*/
+    background-image: url(https://raw.githubusercontent.com/mhans003/calendarapp/master/assets/images/desk1.jpg);
     background-size: cover; 
     color: #fff; 
 }
