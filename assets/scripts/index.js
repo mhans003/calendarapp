@@ -160,7 +160,6 @@ function getCurrentColors() {
 function changeCalendar(event) {
     //When the user clicks an arrow to change the date, see which button it was.
     var button = $(event.target).attr("id"); 
-    console.log(button); 
 
     //If the back button was pressed, take away one from the offset. 
     if(button === "back-button") {
