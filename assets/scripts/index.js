@@ -3,6 +3,12 @@
 var currentDate; 
 var currentHour; 
 
+//Every second, update the time. 
+setInterval(tick, 1000); 
+
+//Temp test code to see if changeCalendar works.
+//setInterval(changeCalendar, 5000);
+
 //Keep track of whether the user is on the current day (0 === today). 
 var dayOffset = 0; 
 
@@ -158,13 +164,19 @@ function getCurrentColors() {
 }
 
 function changeCalendar(event) {
-    //When the user clicks an arrow to change the date, see which button it was.
-    var button = $(event.target).attr("id"); 
+    //Change the calendar and update its output depending on a button press or hour change.
+    
+    //If this was triggered by a button, see which one was pressed. 
+    if(event) {
+        var button = $(event.target).attr("id"); 
+    }
 
+    //Temp. Show that the calendar was changed successfully. 
+    console.log("calendar changed"); 
+    
     //If the back button was pressed, take away one from the offset. 
     if(button === "back-button") {
         dayOffset--; 
-
     //Otherwise, add to the day offset. 
     } else if(button === "forward-button") {
         dayOffset++; 
@@ -183,6 +195,15 @@ function changeCalendar(event) {
     fillSavedEvents(); 
     //Fill in colors for past, present, and future.
     getCurrentColors(); 
+}
+
+function tick() {
+    //Set the clock time to the current time. 
+    $("#current-time").text(moment().format("hh : mm : ss A")); 
+    //If the current hour is greater than the stored currentHour, it means the time has progressed and the calendar needs to be changed live.
+    if(moment().format("HH") > currentHour || moment().format("HH : mm : ss A") === "00 : 00 : 00 AM") {
+        changeCalendar(); 
+    }
 }
 
 //Event listeners for changing the starting and ending times will trigger the calendar to reset with the new times. 

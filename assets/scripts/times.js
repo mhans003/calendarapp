@@ -23,3 +23,4 @@ function fillTimes() {
         times.push(new time(thisTime)); 
     }
 }
+

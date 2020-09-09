@@ -33,6 +33,10 @@ h6 {
     animation: popout 0.8s;
 }
 
+#current-time {
+    margin-top: 20px; 
+}
+
 /*STYLES FOR DROPDOWN*/
 
 #info-button {
