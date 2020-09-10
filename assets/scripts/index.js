@@ -56,6 +56,7 @@ function printTimes(times) {
         timeDiv.text(time.timeString); 
 
         //Create div for content. Create its id dynamically from the current time's military time. 
+        //var contentDiv = $("<div>"); 
         var contentDiv = $("<div>"); 
         contentDiv.attr("class", "col-sm-8 content-div");
         contentDiv.attr("id", `content-div-${time.militaryTime}`); 
@@ -199,7 +200,7 @@ function changeCalendar(event) {
 
 function tick() {
     //Set the clock time to the current time. 
-    $("#current-time").text(moment().format("hh : mm : ss A")); 
+    $("#current-time").text(moment().format("hh : mm A")); 
     //If the current hour is greater than the stored currentHour, it means the time has progressed and the calendar needs to be changed live.
     if(moment().format("HH") > currentHour || moment().format("HH : mm : ss A") === "00 : 00 : 00 AM") {
         changeCalendar(); 
