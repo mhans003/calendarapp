@@ -67,7 +67,7 @@ h6 {
 
 .time-row {
     height: 100px; 
-    border-bottom: 1px dotted;
+    /*border-bottom: 1px dotted;*/
 }
 
 .content-div, .time-div {
@@ -75,11 +75,11 @@ h6 {
 }
 
 .content-div:first-of-type {
-    border-top: 1px dotted;
+    /*border-top: 1px dotted;*/
 }
 
 .content-div:last-of-type {
-    border-bottom: 1px dotted; 
+    /*border-bottom: 1px dotted; */
 }
 
 .time-div {

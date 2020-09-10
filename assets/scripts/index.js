@@ -57,7 +57,7 @@ function printTimes(times) {
 
         //Create div for content. Create its id dynamically from the current time's military time. 
         //var contentDiv = $("<div>"); 
-        var contentDiv = $("<div>"); 
+        var contentDiv = $("<textarea>"); 
         contentDiv.attr("class", "col-sm-8 content-div");
         contentDiv.attr("id", `content-div-${time.militaryTime}`); 
         contentDiv.attr("contenteditable", "true"); 
@@ -90,7 +90,8 @@ function saveTimeRows(event) {
     var calendarEvent = {
         date: currentDate,
         time: $(`#${$(event.target).attr("data-target")}`).attr("id"),
-        content: $(`#${$(event.target).attr("data-target")}`).text()
+        //content: $(`#${$(event.target).attr("data-target")}`).text()
+        content: $(`#${$(event.target).attr("data-target")}`).val()
     }; 
 
     //Create a key for storing this particular calendar event in local storage. Parse to JSON. 
