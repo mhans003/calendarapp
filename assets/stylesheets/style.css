@@ -146,6 +146,10 @@ h6 {
     .time-row {
         margin-top: 5%; 
     }
+
+    .fa-save {
+        color: rgba(129, 236, 236, 1.0); 
+    }
 }
 
 @media screen and (max-width: 310px) {
