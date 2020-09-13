@@ -211,3 +211,7 @@ function tick() {
 //Event listeners for changing the starting and ending times will trigger the calendar to reset with the new times. 
 $("#start-time").on("change", changeCalendar); 
 $("#end-time").on("change", changeCalendar); 
+$("#today-button").on("click", function() {
+    dayOffset = 0; 
+    changeCalendar(); 
+}); 

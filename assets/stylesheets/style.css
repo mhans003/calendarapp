@@ -25,7 +25,7 @@ h1, h6 {
 }
 
 h1 {
-    line-height: 150px;
+    line-height: 100px;
     animation: popout 0.6s;
 }
 
