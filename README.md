@@ -5,6 +5,7 @@
 [Day Planner](https://mhans003.github.io/calendarapp/)
 
 ![Screenshot of Day Planner](./assets/images/appshot.jpg)
+![Screenshot of Day Planner](./assets/images/appshot2.jpg)
 
 ### Description 
 
