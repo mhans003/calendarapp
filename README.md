@@ -25,3 +25,6 @@ When the user makes a change to a time slot by adding, editing, or deleting the 
 * CSS animations produce a more engaging experience. 
 * Dynamically-produced elements allow for a cleaner HTML homepage. 
 
+### License 
+
+Licensed under the [MIT License](./LICENSE.txt).
