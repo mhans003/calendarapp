@@ -1,13 +1,13 @@
 # Day Planner Calendar App
 
-### Deployed Application 
+## Deployed Application 
 
 [Day Planner](https://mhans003.github.io/calendarapp/)
 
 ![Screenshot of Day Planner](./assets/images/appshot.jpg)
 ![Second screenshot of Day Planner](./assets/images/appshot2.jpg)
 
-### Description 
+## Description 
 
 This program is a browser-based calendar application that allows a user to view, edit, and save upcoming events. 
 
@@ -15,7 +15,7 @@ The program initiates with the default time slots and loads events that are alre
 
 When the user makes a change to a time slot by adding, editing, or deleting the text in an event, the corresponding save button can be pressed for that time slot in order to allow the event to persist in the browser's local storage.  
 
-### Features
+## Features
 
 * Moment.js utilized to access current time and date. 
 * Responsive to screen sizes across devices. 
@@ -24,7 +24,15 @@ When the user makes a change to a time slot by adding, editing, or deleting the 
 * Font Awesome icons support a more satisfying layout. 
 * CSS animations produce a more engaging experience. 
 * Dynamically-produced elements allow for a cleaner HTML homepage. 
+* jQuery, HTML, CSS
 
-### License 
+## Contact
+
+Michael Hanson
+* michaeledwardhanson@gmail.com
+* [GitHub](https://github.com/mhans003)
+* [LinkedIn](https://www.linkedin.com/in/michaeledwardhanson/)
+
+## License 
 
 Licensed under the [MIT License](./LICENSE.txt).
