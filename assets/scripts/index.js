@@ -61,6 +61,7 @@ function printTimes(times) {
         contentDiv.attr("class", "col-sm-8 content-div");
         contentDiv.attr("id", `content-div-${time.militaryTime}`); 
         contentDiv.attr("contenteditable", "true"); 
+        contentDiv.attr("aria-label", `Enter calendar content for ${time.timeString} here`);
         contentDiv.text(""); 
 
         //Create save button icon, also setting its id. 
@@ -68,6 +69,7 @@ function printTimes(times) {
         saveDiv.attr("class", "col-sm-2 save-div"); 
         saveDiv.attr("id", `save-button-${time.militaryTime}`);
         saveDiv.attr("data-target", `content-div-${time.militaryTime}`); 
+        saveDiv.attr("aria-label", `Save the calendar item for ${time.timeString}`);
         saveDiv.html("<i class='far fa-save'></i>"); 
 
         //Append time div, content div, and save div to the row.
